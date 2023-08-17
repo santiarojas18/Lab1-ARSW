@@ -15,12 +15,20 @@
 
 **Parte I - Introducción a Hilos en Java**
 
-1. De acuerdo con lo revisado en las lecturas, complete las clases CountThread, para que las mismas definan el ciclo de vida de un hilo que imprima por pantalla los números entre A y B.
+<strong>1. De acuerdo con lo revisado en las lecturas, complete las clases CountThread, para que las mismas definan el ciclo de vida de un hilo que imprima por pantalla los números entre A y B.
 2. Complete el método __main__ de la clase CountMainThreads para que:
 	1. Cree 3 hilos de tipo CountThread, asignándole al primero el intervalo [0..99], al segundo [99..199], y al tercero [200..299].
 	2. Inicie los tres hilos con 'start()'.
 	3. Ejecute y revise la salida por pantalla. 
-	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.
+	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.</strong>
+
+	Al ejecutarlo con start() se evidencia el correcto paralelismo que se esperaba, en este caso encontramos que primero se ejecuta el secondThread, pero no imprime en orden los números:
+	![img.png](img.png)
+
+	Al hacerlo con run(), se observa que se imprimen en orden los números:
+	![img_1.png](img_1.png)
+
+	Esto sucede porque se hace un llamado al método run() de cada hilo creado, ejecutándose el contenido de este sobre el hilo principal (main()), mientras que con start() se ejecutan los tres hilos al tiempo, imprimiendo los números en un orden aletorio debido a la concurrencia.
 
 **Parte II - Ejercicio Black List Search**
 
