@@ -10,30 +10,36 @@
 *  [Threads vs Processes]( http://cs-fundamentals.com/tech-interview/java/differences-between-thread-and-process-in-java.php)
 
 ### Descripción
-  Este ejercicio contiene una introducción a la programación con hilos en Java, además de la aplicación a un caso concreto.
+  **Este ejercicio contiene una introducción a la programación con hilos en Java, además de la aplicación a un caso concreto.**
   
 
 **Parte I - Introducción a Hilos en Java**
 
-<strong>1. De acuerdo con lo revisado en las lecturas, complete las clases CountThread, para que las mismas definan el ciclo de vida de un hilo que imprima por pantalla los números entre A y B.
+<strong>
+	
+1. De acuerdo con lo revisado en las lecturas, complete las clases CountThread, para que las mismas definan el ciclo de vida de un hilo que imprima por pantalla los números entre A y B.
 2. Complete el método __main__ de la clase CountMainThreads para que:
 	1. Cree 3 hilos de tipo CountThread, asignándole al primero el intervalo [0..99], al segundo [99..199], y al tercero [200..299].
 	2. Inicie los tres hilos con 'start()'.
 	3. Ejecute y revise la salida por pantalla. 
-	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.</strong>
+	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.
 
-	Al ejecutarlo con start() se evidencia el correcto paralelismo que se esperaba, en este caso encontramos que primero se ejecuta el secondThread, pero no imprime en orden los números:
+ </strong>
+
+Al ejecutarlo con start() se evidencia el correcto paralelismo que se esperaba, en este caso encontramos que primero se ejecuta el secondThread, pero no imprime en orden los números:
 	![img.png](img/img.png)
 
-	Al hacerlo con run(), se observa que se imprimen en orden los números:
+Al hacerlo con run(), se observa que se imprimen en orden los números:
 	![img_1.png](img/img_1.png)
 
-	Esto sucede porque al hacerlo de la primera foram se hace un llamado al método run() de cada hilo creado, ejecutándose el contenido de este sobre el hilo principal (main()), mientras que con start() se ejecutan los tres hilos al tiempo junto con el hilo main, imprimiendo los números en un orden aleatorio debido a la concurrencia.
+Esto sucede porque al hacerlo de la primera forma se hace un llamado al método run() de cada hilo creado, ejecutándose el contenido de este sobre el hilo principal (main()), mientras que con start() se ejecutan los tres hilos al tiempo junto con el hilo main, imprimiendo los números en un orden aleatorio debido a la concurrencia.
 
 **Parte II - Ejercicio Black List Search**
 
 
-<strong>Para un software de vigilancia automática de seguridad informática se está desarrollando un componente encargado de validar las direcciones IP en varios miles de listas negras (de host maliciosos) conocidas, y reportar aquellas que existan en al menos cinco de dichas listas. 
+<strong>
+
+Para un software de vigilancia automática de seguridad informática se está desarrollando un componente encargado de validar las direcciones IP en varios miles de listas negras (de host maliciosos) conocidas, y reportar aquellas que existan en al menos cinco de dichas listas. 
 
 Dicho componente está diseñado de acuerdo con el siguiente diagrama, donde:
 
@@ -62,7 +68,9 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 
 	* Dentro del método checkHost Se debe mantener el LOG que informa, antes de retornar el resultado, el número de listas negras revisadas VS. el número de listas negras total (línea 60). Se debe garantizar que dicha información sea verídica bajo el nuevo esquema de procesamiento en paralelo planteado.
 
-	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa, y que el host 212.24.24.55 NO está en ninguna lista negra.</strong>
+	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa, y que el host 212.24.24.55 NO está en ninguna lista negra.
+
+</strong>
 
 La implementación se encuentra en el repositorio.
 
