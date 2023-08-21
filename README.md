@@ -138,11 +138,20 @@ Con esto concluimos gracias al log de la aplicación que con 1 hilo se demora me
 
 </strong>
 
-El mejor desempeño no se logra con los 500 hilos, porque a pesar de que el tiempo que le tomaba al programa cumplir con su función disminuía, el consumo de memoria se hacía mayor. Además 
+El mejor desempeño no se logra con los 500 hilos, porque a pesar de que el tiempo que le tomaba al programa cumplir con su función disminuía, el consumo de memoria se hacía mayor. Además, el uso de más hilos no siempre es la mejor opción, ya que la capacidad de la CPU del dispositivo que se esté usando y la cantidad de núcleos que posea hará que sea mejor usar más o menos hilos; incluso puede que la escalabilidad se vea limitada no sólo por el hardware, sino también por la técnica de paralelización empleada.
 
-3. Cómo se comporta la solución usando tantos hilos de procesamiento como núcleos comparado con el resultado de usar el doble de éste?.
+<strong>
 
-4. De acuerdo con lo anterior, si para este problema en lugar de 100 hilos en una sola CPU se pudiera usar 1 hilo en cada una de 100 máquinas hipotéticas, la ley de Amdahls se aplicaría mejor?. Si en lugar de esto se usaran c hilos en 100/c máquinas distribuidas (siendo c es el número de núcleos de dichas máquinas), se mejoraría?. Explique su respuesta.
+2. Cómo se comporta la solución usando tantos hilos de procesamiento como núcleos comparado con el resultado de usar el doble de éste?.
 
+</strong>
+
+
+
+<strong>
+
+3. De acuerdo con lo anterior, si para este problema en lugar de 100 hilos en una sola CPU se pudiera usar 1 hilo en cada una de 100 máquinas hipotéticas, la ley de Amdahls se aplicaría mejor?. Si en lugar de esto se usaran c hilos en 100/c máquinas distribuidas (siendo c es el número de núcleos de dichas máquinas), se mejoraría?. Explique su respuesta.
+
+</strong>
 
 
