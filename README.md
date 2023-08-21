@@ -146,7 +146,7 @@ El mejor desempeño no se logra con los 500 hilos, porque a pesar de que el tiem
 
 </strong>
 
-
+Cuando usamos tantos hilos de procesamiento como el doble de núcleos del dispositivo sobre el cual estamos trabajando, se observa una disminución notable de 6 segundos en el tiempo empleado para la realiazción del proceso, pero un aumento en la memoria de 5´000.000 B aproximadamente. Esto nos permite analizar al igual que en el punto anterior, que es evidente una mayor agilidad pero con un consumo mayor de otros recursos.
 
 <strong>
 
