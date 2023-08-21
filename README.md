@@ -79,7 +79,7 @@ La implementación se encuentra en el repositorio.
 
 **La estrategia de paralelismo antes implementada es ineficiente en ciertos casos, pues la búsqueda se sigue realizando aún cuando los N hilos (en su conjunto) ya hayan encontrado el número mínimo de ocurrencias requeridas para reportar al servidor como malicioso. Cómo se podría modificar la implementación para minimizar el número de consultas en estos casos?, qué elemento nuevo traería esto al problema?**
 
-Podría implementarse una forma en la que existan dos variables compartidas por todos los hilos, donde una que contiene las ocurrencias de cada host en una lista negra, y otra que sea una lista en la que se almacena donde se ha encontrado al servidor como malicioso. Una vez esta primera variable llega a 5, se haría que se detuviera la ejecución, y por lo tanto, se minimizaría el costo de los recursos usados para la realización del proceso de búsqueda. Esto implicaría el uso de una variable que puedan acceder y modificar todos los hilos, y una forma de evitar errores cuando dos o más hilos intenten modificarla al tiempo.
+Podría implementarse una forma en la que existan dos variables compartidas por todos los hilos, donde una contiene las ocurrencias de cada host en una lista negra, y otra  una lista en la que se almacena dónde se ha encontrado al servidor como malicioso. Cuando esta primera variable llega a 5, se haría que se detuviera la ejecución, y por lo tanto, se minimizaría el costo de los recursos usados para la realización del proceso de búsqueda. Esto implicaría el uso de variables que puedan ser accedidas y modificadas por todos los hilos, y una forma de evitar errores cuando dos o más hilos intenten modificarla al tiempo.
 
 **Parte III - Evaluación de Desempeño**
 
