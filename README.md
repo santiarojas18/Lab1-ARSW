@@ -154,4 +154,6 @@ Cuando usamos tantos hilos de procesamiento como el doble de núcleos del dispos
 
 </strong>
 
+En primer lugar, como vimos en la práctica, al usar sólamente un hilo, la velocidad con la que se ejecutó el programa fue tal que no se alcanzó a seleccionar el programa en ejecución en VisualVM. Por otro lado, analizando detalladamente la ley de Amdahls, si n=1, entonces S(1)=1, por lo que se mejoraría en factor de 1 el algoritmo con sólo un hilo en un dispositivo. Este no es el mejor resultado que se puede obtener, pero es mayor que cuando se usa una cantidad muy grande de hilos; y aprovechando el uso de múltiples dispositivos, despreciando el tiempo que les tomaría comunicarse la información entre ellos y el consumo de otros recursos como energía, sería bastante eficiente.  
+Si se usarán por máquina tantos hilos como núcleos posean, podría ocurrir lo que sucedió anteriormente, donde se disminuyó notablemente el tiempo de ejecución, pero aumentó el costo de memoria que implicaba la búsqueda en las listas negras. Sin embargo, si casualmente el valor de "c" es el mejor valor para obtener el mejor rendimiento según la ley de Amdahls, podría por el contrario aprovecharse en conjunto los recursos de la mejor forma y obtener los mejores resultados.
 
