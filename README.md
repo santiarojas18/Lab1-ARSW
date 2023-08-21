@@ -28,7 +28,7 @@
 	Al hacerlo con run(), se observa que se imprimen en orden los números:
 	![img_1.png](img_1.png)
 
-	Esto sucede porque se hace un llamado al método run() de cada hilo creado, ejecutándose el contenido de este sobre el hilo principal (main()), mientras que con start() se ejecutan los tres hilos al tiempo, imprimiendo los números en un orden aletorio debido a la concurrencia.
+	Esto sucede porque al hacerlo de la primera foram se hace un llamado al método run() de cada hilo creado, ejecutándose el contenido de este sobre el hilo principal (main()), mientras que con start() se ejecutan los tres hilos al tiempo junto con el hilo main, imprimiendo los números en un orden aleatorio debido a la concurrencia.
 
 **Parte II - Ejercicio Black List Search**
 
