@@ -33,7 +33,7 @@
 **Parte II - Ejercicio Black List Search**
 
 
-Para un software de vigilancia automática de seguridad informática se está desarrollando un componente encargado de validar las direcciones IP en varios miles de listas negras (de host maliciosos) conocidas, y reportar aquellas que existan en al menos cinco de dichas listas. 
+<strong>Para un software de vigilancia automática de seguridad informática se está desarrollando un componente encargado de validar las direcciones IP en varios miles de listas negras (de host maliciosos) conocidas, y reportar aquellas que existan en al menos cinco de dichas listas. 
 
 Dicho componente está diseñado de acuerdo con el siguiente diagrama, donde:
 
@@ -62,7 +62,9 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 
 	* Dentro del método checkHost Se debe mantener el LOG que informa, antes de retornar el resultado, el número de listas negras revisadas VS. el número de listas negras total (línea 60). Se debe garantizar que dicha información sea verídica bajo el nuevo esquema de procesamiento en paralelo planteado.
 
-	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa, y que el host 212.24.24.55 NO está en ninguna lista negra.
+	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa, y que el host 212.24.24.55 NO está en ninguna lista negra.</strong>
+
+La implementación se encuentra en el repositorio.
 
 
 **Parte II.I Para discutir la próxima clase (NO para implementar aún)**
@@ -71,17 +73,48 @@ La estrategia de paralelismo antes implementada es ineficiente en ciertos casos,
 
 **Parte III - Evaluación de Desempeño**
 
-A partir de lo anterior, implemente la siguiente secuencia de experimentos para realizar las validación de direcciones IP dispersas (por ejemplo 202.24.34.55), tomando los tiempos de ejecución de los mismos (asegúrese de hacerlos en la misma máquina):
+**A partir de lo anterior, implemente la siguiente secuencia de experimentos para realizar las validación de direcciones IP dispersas (por ejemplo 202.24.34.55), tomando los tiempos de ejecución de los mismos (asegúrese de hacerlos en la misma máquina):**
 
-1. Un solo hilo.
-2. Tantos hilos como núcleos de procesamiento (haga que el programa determine esto haciendo uso del [API Runtime](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html)).
-3. Tantos hilos como el doble de núcleos de procesamiento.
-4. 50 hilos.
-5. 100 hilos.
+1. **Un solo hilo.**
+	
+	La ejecución con un solo hilo es tan rápida que no fue posible seleccionar el programa en ejecución en VisualVM.
 
-Al iniciar el programa ejecute el monitor jVisualVM, y a medida que corran las pruebas, revise y anote el consumo de CPU y de memoria en cada caso. ![](img/jvisualvm.png)
+2. **Tantos hilos como núcleos de procesamiento (haga que el programa determine esto haciendo uso del [API Runtime](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html)).**
 
-Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tiempo de solución vs. número de hilos. Analice y plantee hipótesis con su compañero para las siguientes preguntas (puede tener en cuenta lo reportado por jVisualVM):
+	Para tener tantos hilos como núcleos se hace por medio de la clase Runtime a través del método availableProcessors():
+    ![img_2.png](img_2.png)
+	
+	En este caso se cuenta con 12 núcleos de procesamiento:
+	![img_4.png](img_4.png)
+
+	Se evidencia que el gasto de CPU es del 0,1%, el espacio de memoria usado es de 17'530.880B y un tiempo de ejecución de 10 segundos:
+	![img_5.png](img_5.png)
+
+3. **Tantos hilos como el doble de núcleos de procesamiento.**
+
+	Para esta prueba se realiza de la misma manera que el índice 2, pero en este caso con 24 núcleos de procesamiento.
+
+	Los resultados obtenidos indican que el gasto de CPU se mantiene igual, pero en cambio el espacio de memoria aumenta a 22'163.800B y el tiempo de ejecución disminuye a 4 segundos:
+	![img_6.png](img_6.png)
+
+4. **50 hilos.**
+
+	En este caso el gasto de CPU es tan bajo que el monitoreo no lo muestra, por otro lado el espacio de memoria volvió a bajar a 13'550.176B y el tiempo sigue disminuyendo a 2 segundos:
+	![img_7.png](img_7.png)
+	
+5. **100 hilos.**
+
+	Finalmente tampoco detecta el gasto de CPU, el espacio en memoria aumenta y como se esperaba el tiempo de ejecución disminuye a 1 segundo:
+	![img_8.png](img_8.png)
+
+**Al iniciar el programa ejecute el monitor jVisualVM, y a medida que corran las pruebas, revise y anote el consumo de CPU y de memoria en cada caso.** ![](img/jvisualvm.png)
+
+**Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tiempo de solución vs. número de hilos. Analice y plantee hipótesis con su compañero para las siguientes preguntas (puede tener en cuenta lo reportado por jVisualVM):**
+
+Se asume que el tiempo de ejecución con 1 hilo es de 0 segundos para graficar, con esto y con los datos obtenidos, se registra el siguiente comportamiento:
+![img_11.png](img_11.png)
+![img_10.png](img_10.png)
+Con esto concluimos gracias al log de la aplicación que con 1 hilo se demora menos porque es la cantidad con la que menos listas busca, exactamente realiza dicha búsqueda en 1.001 listas.
 
 **Parte IV - Ejercicio Black List Search**
 
