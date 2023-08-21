@@ -119,7 +119,7 @@ La estrategia de paralelismo antes implementada es ineficiente en ciertos casos,
 
 **Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tiempo de solución vs. número de hilos. Analice y plantee hipótesis con su compañero para las siguientes preguntas (puede tener en cuenta lo reportado por jVisualVM):**
 
-Se asume que el tiempo de ejecución con 1 hilo es de 0 segundos para graficar, con esto y con los datos obtenidos, se registra el siguiente comportamiento:
+Se asume que el tiempo de ejecución con 1 hilo es de 0 segundos para graficar, con esto y con los datos obtenidos, se registra el siguiente comportamiento:  
 ![img_11.png](img/img_11.png)
 
 ![img_10.png](img/img_10.png)
