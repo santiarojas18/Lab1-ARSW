@@ -23,10 +23,10 @@
 	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.</strong>
 
 	Al ejecutarlo con start() se evidencia el correcto paralelismo que se esperaba, en este caso encontramos que primero se ejecuta el secondThread, pero no imprime en orden los números:
-	![img.png](img.png)
+	![img.png](img/img.png)
 
 	Al hacerlo con run(), se observa que se imprimen en orden los números:
-	![img_1.png](img_1.png)
+	![img_1.png](img/img_1.png)
 
 	Esto sucede porque al hacerlo de la primera foram se hace un llamado al método run() de cada hilo creado, ejecutándose el contenido de este sobre el hilo principal (main()), mientras que con start() se ejecutan los tres hilos al tiempo junto con el hilo main, imprimiendo los números en un orden aleatorio debido a la concurrencia.
 
@@ -82,38 +82,40 @@ La estrategia de paralelismo antes implementada es ineficiente en ciertos casos,
 2. **Tantos hilos como núcleos de procesamiento (haga que el programa determine esto haciendo uso del [API Runtime](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html)).**
 
 	Para tener tantos hilos como núcleos se hace por medio de la clase Runtime a través del método availableProcessors():
-    ![img_2.png](img_2.png)
+    ![img_2.png](img/img_2.png)
 	
 	En este caso se cuenta con 12 núcleos de procesamiento:
-	![img_4.png](img_4.png)
+	![img_4.png](img/img_4.png)
 
 	Se evidencia que el gasto de CPU es del 0,1%, el espacio de memoria usado es de 17'530.880B y un tiempo de ejecución de 10 segundos:
-	![img_5.png](img_5.png)
+	![img_5.png](img/img_5.png)
 
 3. **Tantos hilos como el doble de núcleos de procesamiento.**
 
 	Para esta prueba se realiza de la misma manera que el índice 2, pero en este caso con 24 núcleos de procesamiento.
 
 	Los resultados obtenidos indican que el gasto de CPU se mantiene igual, pero en cambio el espacio de memoria aumenta a 22'163.800B y el tiempo de ejecución disminuye a 4 segundos:
-	![img_6.png](img_6.png)
+	![img_6.png](img/img_6.png)
 
 4. **50 hilos.**
 
 	En este caso el gasto de CPU es tan bajo que el monitoreo no lo muestra, por otro lado el espacio de memoria volvió a bajar a 13'550.176B y el tiempo sigue disminuyendo a 2 segundos:
-	![img_7.png](img_7.png)
+	![img_7.png](img/img_7.png)
 	
 5. **100 hilos.**
 
 	Finalmente tampoco detecta el gasto de CPU, el espacio en memoria aumenta y como se esperaba el tiempo de ejecución disminuye a 1 segundo:
-	![img_8.png](img_8.png)
+	![img_8.png](img/img_8.png)
 
 **Al iniciar el programa ejecute el monitor jVisualVM, y a medida que corran las pruebas, revise y anote el consumo de CPU y de memoria en cada caso.** ![](img/jvisualvm.png)
 
 **Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tiempo de solución vs. número de hilos. Analice y plantee hipótesis con su compañero para las siguientes preguntas (puede tener en cuenta lo reportado por jVisualVM):**
 
 Se asume que el tiempo de ejecución con 1 hilo es de 0 segundos para graficar, con esto y con los datos obtenidos, se registra el siguiente comportamiento:
-![img_11.png](img_11.png)
-![img_10.png](img_10.png)
+![img_11.png](img/img_11.png)
+
+![img_10.png](img/img_10.png)
+
 Con esto concluimos gracias al log de la aplicación que con 1 hilo se demora menos porque es la cantidad con la que menos listas busca, exactamente realiza dicha búsqueda en 1.001 listas.
 
 **Parte IV - Ejercicio Black List Search**
