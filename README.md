@@ -138,7 +138,7 @@ Con esto concluimos gracias al log de la aplicación que con 1 hilo se demora me
 
 </strong>
 
-El mejor desempeño no se logra con los 500 hilos, porque a pesar de que el tiempo que le tomaba al programa cumplir con su función tiende a disminuir, el consumo de memoria se hacía mayor. Además, el uso de más hilos no siempre es la mejor opción, ya que la capacidad de la CPU del dispositivo que se esté usando y la cantidad de núcleos que posea hará que sea mejor usar más o menos hilos; incluso puede que la escalabilidad se vea limitada no sólo por el hardware, sino también por la técnica de paralelización empleada.
+Analizando de forma teórica y práctica, se prueba que con 500 hilos se logra un mejor rendimiento que con 200, pero no se lográ el mejor rendimiento os 500 hilos. Al suponer teóricamente que la fracción paralelizable es P=0.7, a partir de la ley de Amdahls se evidencia que con 500 hilos: S(500)=3.32, mientras que con 200 hilos: S(200)=3.29. Por otro lado, con el apoyo de VisualVM, se observa que con 500 hilos fue casi que instantánea la respuesta al problema, mientras que con 200 hilos de procesamiento se tomaba un poco más de tiempo para finalizar el proceso.
 
 <strong>
 
@@ -146,7 +146,7 @@ El mejor desempeño no se logra con los 500 hilos, porque a pesar de que el tiem
 
 </strong>
 
-Cuando usamos tantos hilos de procesamiento como el doble de núcleos del dispositivo sobre el cual estamos trabajando, se observa una disminución notable de 6 segundos en el tiempo empleado para la realiazción del proceso, pero un aumento en la memoria de 5´000.000 B aproximadamente. Esto nos permite analizar al igual que en el punto anterior, que es evidente una mayor agilidad pero con un consumo mayor de otros recursos.
+Cuando usamos tantos hilos de procesamiento como el doble de núcleos del dispositivo sobre el cual estamos trabajando, se observa a través de VisualVM una disminución notable de 6 segundos en el tiempo empleado para la realiazación del proceso, pero un aumento en la memoria de 5´000.000 B aproximadamente. Ahora, partiendo de la misma hipótesis anterior, teniendo como fracción paralelizable del algoritmo P=0.7, vemos que se obtiene una mayor mejora teórica en el desempeño cuando se usan tantos hilos como el doble de núcleos del procesador, que cuando se usan exactamente la misma cantidad de hilos que de núcleos: S(24)=3.04 y S(12)=2.79 respectivamente.
 
 <strong>
 
@@ -154,6 +154,6 @@ Cuando usamos tantos hilos de procesamiento como el doble de núcleos del dispos
 
 </strong>
 
-En primer lugar, como vimos en la práctica, al usar sólamente un hilo, la velocidad con la que se ejecutó el programa fue tal que no se alcanzó a seleccionar el programa en ejecución en VisualVM. Por otro lado, analizando detalladamente la ley de Amdahls, si n=1, entonces S(1)=1, por lo que se mejoraría en factor de 1 el algoritmo con sólo un hilo en un dispositivo. Este no es el mejor resultado que se puede obtener, pero es mayor que cuando se usa una cantidad muy grande de hilos; y aprovechando el uso de múltiples dispositivos, despreciando el tiempo que les tomaría comunicarse la información entre ellos y el consumo de otros recursos como energía, sería bastante eficiente.  
-Si se usarán por máquina tantos hilos como núcleos posean, podría ocurrir lo que sucedió anteriormente, donde se disminuyó notablemente el tiempo de ejecución, pero aumentó el costo de memoria que implicaba la búsqueda en las listas negras. Sin embargo, si casualmente el valor de "c" es el mejor valor para obtener el mejor rendimiento según la ley de Amdahls, podría por el contrario aprovecharse en conjunto los recursos de la mejor forma y obtener los mejores resultados.
+En primer lugar, como vimos en la práctica, al usar sólamente un hilo, la velocidad con la que se ejecutó el programa fue tal que no se alcanzó a seleccionar el programa en ejecución en VisualVM. Por otro lado, analizando detalladamente la ley de Amdahls, si n=1, entonces S(1)=1, por lo que se mejoraría en factor de 1 el algoritmo con sólo un hilo en un dispositivo. Aprovechando el uso de múltiples dispositivos, despreciando el tiempo que les tomaría comunicarse la información entre ellos y el consumo de otros recursos como energía, sería bastante eficiente.  
+Si se usarán por máquina tantos hilos como núcleos posean, podría ocurrir lo que sucedió anteriormente a través de VisualVM, donde se disminuyó notablemente el tiempo de ejecución, pero aumentó el costo de memoria que implicaba la búsqueda en las listas negras. Sin embargo, teóricamente y según la hipótesis planteada, entre más hilos se logra un aumento en la mejora del desempeño de ejecución del programa.
 
