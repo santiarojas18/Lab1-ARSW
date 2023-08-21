@@ -138,7 +138,7 @@ Con esto concluimos gracias al log de la aplicación que con 1 hilo se demora me
 
 </strong>
 
-El mejor desempeño no se logra con los 500 hilos, porque a pesar de que el tiempo que le tomaba al programa cumplir con su función disminuía, el consumo de memoria se hacía mayor. Además, el uso de más hilos no siempre es la mejor opción, ya que la capacidad de la CPU del dispositivo que se esté usando y la cantidad de núcleos que posea hará que sea mejor usar más o menos hilos; incluso puede que la escalabilidad se vea limitada no sólo por el hardware, sino también por la técnica de paralelización empleada.
+El mejor desempeño no se logra con los 500 hilos, porque a pesar de que el tiempo que le tomaba al programa cumplir con su función tiende a disminuir, el consumo de memoria se hacía mayor. Además, el uso de más hilos no siempre es la mejor opción, ya que la capacidad de la CPU del dispositivo que se esté usando y la cantidad de núcleos que posea hará que sea mejor usar más o menos hilos; incluso puede que la escalabilidad se vea limitada no sólo por el hardware, sino también por la técnica de paralelización empleada.
 
 <strong>
 
