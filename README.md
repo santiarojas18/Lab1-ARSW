@@ -3,8 +3,8 @@
 ### Arquitecturas de Software - ARSW
 ## Ejercicio Introducción al paralelismo - Hilos - Caso BlackListSearch
 
-# Santiago Arévalo Rojas
-# Juan Felipe Sánchez Pérez
+### Santiago Arévalo Rojas
+### Juan Felipe Sánchez Pérez
 
 
 ### Dependencias:
